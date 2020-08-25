@@ -1,6 +1,6 @@
 class CooksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  
+
   def index
     @cooks = Cook.all
 
@@ -29,6 +29,6 @@ class CooksController < ApplicationController
   private
 
   def cook_params
-    params.require(:cook).permit(:name, :user_id, :location, :service, :price)
+    params.require(:cook).permit(:name, :user_id, :location, :service, :price, :photo)
   end
 end
