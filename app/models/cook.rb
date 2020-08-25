@@ -1,7 +1,6 @@
 class Cook < ApplicationRecord
   belongs_to :user
-  belongs_to :menu
+  has_many :orders
 
-  validates :address, :schedulle, :price, presence: true
-
+  validates :location, :service, :price, presence: true
 end
