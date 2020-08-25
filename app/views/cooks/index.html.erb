@@ -3,7 +3,11 @@
 
 <% @cooks.each do |cook| %>
   <div class="card-product">
-    <%= image_tag "chef.jpg" %>
+    <% if cook.photo.attached?  %>
+      <%= cl_image_tag cook.photo.key, height: 150, width: 200, crop: :fill %>
+    <% else %>
+      <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 200, crop: :fill %>
+    <% end %>
     <div class="card-product-infos">
       <h4><%= cook.name %></h4>
       <h5><%= cook.location %></h5>
@@ -15,6 +19,7 @@
         <i class="fa fa-star"></i>
         <i class="far fa-star"></i>
       </div>
+      <a class="btn btn-red" href="#">Details</a>
     </div>
   </div>
 <% end %>
