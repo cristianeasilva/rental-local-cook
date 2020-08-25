@@ -1,13 +1,16 @@
 class OrdersController < ApplicationController
-  before_action :set_cook, only: [:create, :new, :show]
+  #before_action :set_cook, only: [:create, :new, :show]
 
   def new
     @order = Order.new
   end
 
   def create
+
     @order = Order.new(order_params)
+
     @order.user = current_user
+    @order.cook = Cook.first
 
     if @order.save
       redirect_to @order, notice: 'Order was successfully created.'
@@ -17,7 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-
+    @order = Order.first
   end
 
   private
