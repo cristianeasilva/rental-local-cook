@@ -1,16 +1,15 @@
 class OrdersController < ApplicationController
-  #before_action :set_cook, only: [:create, :new, :show]
+  before_action :set_order, only: [:show]
 
   def new
     @order = Order.new
   end
 
   def create
-
     @order = Order.new(order_params)
 
     @order.user = current_user
-    @order.cook = Cook.first
+    @order.cook = @cook
 
     if @order.save
       redirect_to @order, notice: 'Order was successfully created.'
@@ -20,16 +19,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.first
+    @order = Order.find(params[:id])
   end
 
   private
 
   def order_params
     params.require(:order).permit(:date)
-  end
-
-  def set_cook
-    @cook = Cook.find(params["cook_id"])
   end
 end
