@@ -1,5 +1,4 @@
 class CooksController < ApplicationController
-
   def index
     @cooks = Cook.all
   end
@@ -9,18 +8,24 @@ class CooksController < ApplicationController
   end
 
   def new
+    @user = current_user
     @cook = Cook.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @cook = Cook.new(cook_params)
     @cook.user = @user
+    if @cook.save
+      redirect_to cook_path(@cook.id), notice: 'Your cook profile has been created!'
+    else
+      render :new
+    end
   end
 
   private
 
   def cook_params
-    params.require(:cook).permit(:user_id, :menu_id, :languages, :address, :schedulle, :price)
+    params.require(:cook).permit(:name, :user_id, :location, :service, :price)
   end
 end
