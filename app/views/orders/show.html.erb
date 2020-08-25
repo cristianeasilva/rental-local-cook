@@ -1,18 +1,17 @@
 <!-- mostrar o que tem na order
 usuario cozinheiro data valor -->
 
-
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= @order.name %>
+  <%= @order.cook.name %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%#= link_to 'Edit', edit_.._path(@) %>
+<%#= link_to 'Back', .._path %>
