@@ -1,6 +1,23 @@
 
 <h1>Welcome to the cooks page</h1>
 
+<% @cooks.each do |cook| %>
+  <div class="card-product">
+    <%= image_tag "chef.jpg" %>
+    <div class="card-product-infos">
+      <h4><%= cook.name %></h4>
+      <h5><%= cook.location %></h5>
+      <p><%= cook.service %></p>
+      <div class="card-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 
 

@@ -1,7 +1,9 @@
 <h3> Create your cook profile</h3>
 <%= simple_form_for [@cook] do |f| %>
+  <%= f.input :name %>
   <%= f.input :location %>
   <%= f.input :service, as: :text%>
   <%= f.input :price%>
   <%= f.button :submit, class: "btn btn-yellow" %>
 <% end %>
+
