@@ -5,8 +5,7 @@
     <div class="col-12">
       <h2 class="text-center">Booking</h2>
     </div>
-
-    <div class="col-12 text-left m-3">
+    <div class="col-12 text-center m-3">
       <p>
         <strong>Cook: </strong>
         <%= @cook.name %>
@@ -20,16 +19,16 @@
         <%= @cook.price %>
       </p>
     </div>
-    <div class="col-12">
+    <div class="col-6 col-md-4">
       <%= simple_form_for([@cook, @order]) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-        <%= f.input :date %>
+        <%= f.input :date, as: :string, required: true, input_html: {class: "datepicker"} %>
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions text-center">
         <%= f.button :submit, class: 'btn btn-red' %>
       </div>
       <% end %>

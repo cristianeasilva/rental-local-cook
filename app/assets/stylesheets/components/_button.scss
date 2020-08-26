@@ -7,7 +7,6 @@
   font-weight: bold;
   font-size: 16px;
   opacity: 0.9;
-  margin-bottom: 8px;
 }
 
 .btn-red:hover {
@@ -33,11 +32,11 @@
 .btn-yellow {
   color: white;
   font-weight: bold;
-  padding: 6px 24px;
+  padding: 8px 24px;
   border-radius: 6px;
   opacity: 1;
   transition: opacity 0.5s ease;
-  background: #f7912c
+  background: #f7912c;
 }
 
 .btn-yellow:hover {
@@ -53,7 +52,7 @@
   border-radius: 6px;
   opacity: 1;
   transition: opacity 0.5s ease;
-  background: #7cb518
+  background: #7cb518;
 }
 
 .btn-green:hover {

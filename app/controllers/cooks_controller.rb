@@ -25,6 +25,19 @@ class CooksController < ApplicationController
     end
   end
 
+  def edit
+    @cook = Cook.find(params[:id])
+  end
+
+  def update
+    @cook = Cook.find(params[:id])
+    if @cook.update(cook_params)
+      redirect_to @cook, notice: 'cook was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def cook_params
