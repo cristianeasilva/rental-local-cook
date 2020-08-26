@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #fbb02d;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,4 +11,9 @@
   height: 100%;
   width: 100px;
   object-fit: cover;
+}
+
+#app-name {
+  font-family: 'Parisienne', cursive;
+  color: #c32f27;
 }

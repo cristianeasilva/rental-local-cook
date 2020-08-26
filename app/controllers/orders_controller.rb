@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
-
   def new
+    @cook = Cook.find(params[:cook_id])
     @order = Order.new
   end
 
   def create
+    @cook = Cook.find(params[:cook_id])
     @order = Order.new(order_params)
 
     @order.user = current_user
