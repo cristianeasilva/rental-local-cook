@@ -16,7 +16,7 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
           </div>
-          <span class="p-2 h5 font-weight-bold">$ <%= cook.price %></span>
+          <span class="p-2 h5 font-weight-bold"><%= number_to_currency(cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= cook.name %></h5>

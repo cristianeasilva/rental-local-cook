@@ -15,8 +15,8 @@
         <%= @cook.service %>
       </p>
       <p>
-        <strong>$: </strong>
-        <%= @cook.price %>
+        <strong> </strong>
+        <%= number_to_currency(@cook.price, unit: "R$ ", separator: ",", delimiter: "") %>
       </p>
     </div>
     <div class="col-6 col-md-4">
