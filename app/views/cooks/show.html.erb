@@ -5,20 +5,26 @@
     <% else %>
       <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 200, crop: :fill, class: 'show-photo' %>
     <% end %>
-    <div class="show-card-infos w-100">
-      <h4><%= @cook.name %></h4>
-      <h5><%= @cook.location %></h5>
+    <div class="show-card-infos w-100 d-flex flex-column justify-content-between">
+
+      <div class="d-flex justify-content-between">
+        <div>
+        <h4 class="mb-4"><%= @cook.name %></h4>
+        <h5><%= @cook.location %></h5>
+        </div>
+        <span class="p-2 h4 font-weight-bold">$ <%= @cook.price %></span>
+      </div>
       <p><%= @cook.service %></p>
-      <div class="w-100 d-flex justify-content-between">
+
+      <div class="w-100 mb-2 d-flex justify-content-between">
         <% if !current_user.nil? && current_user.id == @cook.user_id %>
           <%= link_to "Back", root_path, class: "btn btn-yellow show-btn" %>
-          <%= link_to "Edit", edit_cook_path(@cook), class: 'btn btn-green show-btn' %>
+          <%= link_to "Edit", edit_cook_path(@cook), class: 'btn btn-green' %>
         <% else %>
           <%= link_to "Back", root_path, class: "btn btn-yellow show-btn" %>
-          <%= link_to "Book now", new_cook_order_path(@cook), class: 'btn btn-red show-btn' %>
+          <%= link_to "Book now", new_cook_order_path(@cook), class: 'btn btn-red' %>
         <% end %>
       </div>
-
     </div>
   </div>
 </div>

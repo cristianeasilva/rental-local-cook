@@ -4,6 +4,9 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  position: relative;
+  min-height: 100vh;
+
 }
 
 footer {
@@ -13,4 +16,10 @@ footer {
 .user-form {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
 }
