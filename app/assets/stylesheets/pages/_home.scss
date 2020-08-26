@@ -1,4 +1,17 @@
 // Specific CSS for your home-page
+body {
+  background-image: asset-url('bgimg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
 footer {
   background-color: #c32f27;
+}
+
+.user-form {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
 }

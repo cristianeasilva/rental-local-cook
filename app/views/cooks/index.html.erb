@@ -1,29 +1,30 @@
-
-<h1>Welcome to the cooks page</h1>
-
-<% @cooks.each do |cook| %>
-  <div class="card-product">
+<div class="container m-auto">
+<div class="row row-cols-1 row-cols-md-3">
+  <% @cooks.each do |cook| %>
+    <div class="col mb-4">
+    <div class="card">
     <% if cook.photo.attached?  %>
-      <%= cl_image_tag cook.photo.key, height: 150, width: 200, crop: :fill %>
-    <% else %>
-      <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 200, crop: :fill %>
-    <% end %>
-    <div class="card-product-infos">
-      <h4><%= cook.name %></h4>
-      <h5><%= cook.location %></h5>
-      <p><%= cook.service %></p>
-      <div class="card-stars">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="far fa-star"></i>
-      </div>
-      <%= link_to "Details", cook_path(cook.id), class: 'btn btn-orange' %>
+        <%= cl_image_tag cook.photo.key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+      <% else %>
+        <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+      <% end %>
+    <div class="card-stars">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= cook.name %></h5>
+      <p class="card-text"><%= cook.service %></p>
+      <p class="card-text"><small class="text-muted"><%= cook.location %></small></p>
+
     </div>
+    <%= link_to "Details", cook_path(cook.id), class: 'btn btn-orange' %>
+  </div>
   </div>
 <% end %>
-
-
-
+</div>
+</div>
 

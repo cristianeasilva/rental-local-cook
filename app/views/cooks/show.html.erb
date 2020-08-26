@@ -1,14 +1,18 @@
-
+<div class="container vh-100">
   <div class="show-card">
     <% if @cook.photo.attached?  %>
-      <%= cl_image_tag cook.photo.key, height: 300, width: 400, crop: :fill, class: 'show-photo' %>
+      <%= cl_image_tag @cook.photo.key, height: 300, width: 400, crop: :fill, class: 'show-photo' %>
     <% else %>
       <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 200, crop: :fill, class: 'show-photo' %>
     <% end %>
-    <div class="show-card-infos">
+    <div class="show-card-infos w-100">
       <h4><%= @cook.name %></h4>
       <h5><%= @cook.location %></h5>
       <p><%= @cook.service %></p>
-      <%= link_to "Book now", new_order_path(order_url), class: 'btn btn-red show-btn' %>
+      <div class="w-100 text-right">
+        <%= link_to "Book now", new_cook_order_path(@cook), class: 'btn btn-red show-btn' %>
+      </div>
     </div>
+
   </div>
+</div>

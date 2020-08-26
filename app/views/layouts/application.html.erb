@@ -6,13 +6,14 @@
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-5">
       <a class="navbar-brand d-flex align-items-end" href="#">
         <p id="app-name" class="display-3 m-0 p-0">Local Cooks</p>
       </a>
@@ -41,7 +42,7 @@
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <%= link_to('Profile', edit_user_registration_path, class: "dropdown-item") %>
-                <a class="dropdown-item" href="#">My Cook</a>
+                <%= link_to('Cooks', new_cook_path, class: "dropdown-item") %>
                 <%= link_to('Log out', destroy_user_session_path, :method => 'delete', class: "dropdown-item") %>
               </div>
           </li>
@@ -52,7 +53,7 @@
 
     <%= yield %>
 
-    <footer class="pt-5 pb-1">
+    <footer class="navbar-fixed-bottom mt-5 py-3">
         <p class="text-center text-light">
           Developed at <%= link_to "https://www.lewagon.com", :target => "_blank", class: "navbar-brand" do %>
             <%= image_tag "logolw.png", height: 30, width: 30, crop: :fill  %>
@@ -62,6 +63,7 @@
           <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank", class: "text-info" %>
         </p>
         <div class="pt-3 text-center">Icons made by <a href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <p class="text-center">Photo by <a href="https://unsplash.com/@jsnbrsc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jason Briscoe</a> on <a href="https://unsplash.com/s/photos/cook?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
     </footer>
   </body>
 </html>
