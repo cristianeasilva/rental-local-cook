@@ -45,3 +45,10 @@
   font-size: 12px;
   line-height: 35px;
 }
+
+.card-service {
+  max-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
