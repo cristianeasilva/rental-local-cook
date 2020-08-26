@@ -13,9 +13,10 @@
 
   <body>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <a class="navbar-brand" href="#">
-        <%= image_tag "plate_image.jpg" %>
+      <a class="navbar-brand d-flex align-items-end" href="#">
+        <p id="app-name" class="display-3 m-0 p-0">Local Cooks</p>
       </a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,7 +33,12 @@
             <%= link_to("Log in", new_user_session_path, class: 'btn btn-green') %>
           <% else %>
             <li class="nav-item dropdown text-center">
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+              <% if current_user.photo.attached?  %>
+                <%= cl_image_tag current_user.photo.key, height: 150, width: 200, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}  %>
+              <% else %>
+                <%= image_tag "profile_pic.png",  crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
+              <% end %>
+
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <%= link_to('Profile', edit_user_registration_path, class: "dropdown-item") %>
                 <a class="dropdown-item" href="#">My Cook</a>
@@ -44,9 +50,18 @@
       </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <%= yield %>
+
+    <footer class="pt-5 pb-1">
+        <p class="text-center text-light">
+          Developed at <%= link_to "https://www.lewagon.com", :target => "_blank", class: "navbar-brand" do %>
+            <%= image_tag "logolw.png", height: 30, width: 30, crop: :fill  %>
+          <% end %><br> by
+          <%= link_to "Cristiane Silva", "https://github.com/cristianeasilva", :target => "_blank", class: "text-info" %>,
+          <%= link_to "Ewerton Teixeira", "https://github.com/ewertonteixeira10", :target => "_blank", class: "text-info" %> and
+          <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank", class: "text-info" %>
+        </p>
+        <div class="pt-3 text-center">Icons made by <a href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer>
   </body>
 </html>
