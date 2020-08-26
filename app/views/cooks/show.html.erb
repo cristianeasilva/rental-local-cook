@@ -9,10 +9,16 @@
       <h4><%= @cook.name %></h4>
       <h5><%= @cook.location %></h5>
       <p><%= @cook.service %></p>
-      <div class="w-100 text-right">
-        <%= link_to "Book now", new_cook_order_path(@cook), class: 'btn btn-red show-btn' %>
+      <div class="w-100 d-flex justify-content-between">
+        <% if !current_user.nil? && current_user.id == @cook.user_id %>
+          <%= link_to "Back", root_path, class: "btn btn-yellow show-btn" %>
+          <%= link_to "Edit", edit_cook_path(@cook), class: 'btn btn-green show-btn' %>
+        <% else %>
+          <%= link_to "Back", root_path, class: "btn btn-yellow show-btn" %>
+          <%= link_to "Book now", new_cook_order_path(@cook), class: 'btn btn-red show-btn' %>
+        <% end %>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
