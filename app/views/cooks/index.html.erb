@@ -1,32 +1,32 @@
 <div class="container m-auto">
-<div class="row row-cols-1 row-cols-md-3">
-  <% @cooks.each do |cook| %>
-    <div class="col mb-4">
-      <div class="card">
-      <% if cook.photo.attached?  %>
-        <%= cl_image_tag cook.photo.key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
-      <% end %>
-      <div class="d-flex justify-content-between">
-        <div class="card-stars p-1">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
+  <div class="row row-cols-1 row-cols-md-3">
+    <% @cooks.each do |cook| %>
+      <div class="col mb-4">
+        <div class="card rounded-lg">
+        <% if cook.photo.attached?  %>
+          <%= cl_image_tag cook.photo.key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+        <% end %>
+        <div class="d-flex justify-content-between">
+          <div class="card-stars p-1">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+          </div>
+          <span class="p-2 h5 font-weight-bold">$ <%= cook.price %></span>
         </div>
-        <span class="p-2 h5 font-weight-bold">$ <%= cook.price %></span>
+        <div class="card-body">
+          <h5 class="card-title"><%= cook.name %></h5>
+          <p class="card-text card-service"><%= cook.service %></p>
+          <p class="card-text"><small class="text-muted"><%= cook.location %></small></p>
+        </div>
+        <%= link_to "Details", cook_path(cook.id), class: 'btn btn-green' %>
       </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= cook.name %></h5>
-        <p class="card-text card-service"><%= cook.service %></p>
-        <p class="card-text"><small class="text-muted"><%= cook.location %></small></p>
-      </div>
-      <%= link_to "Details", cook_path(cook.id), class: 'btn btn-yellow' %>
     </div>
+  <% end %>
   </div>
-<% end %>
-</div>
 </div>
 
