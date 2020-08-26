@@ -1,9 +1,14 @@
-<h1><%= @cook.name %></h1>
-<% if @cook.photo.attached? %>
-  <%= cl_image_tag @cook.photo.key, height: 300, width: 400, crop: :fill %>
-<% else %>
-  <%= image_tag "https://loremflickr.com/640/480/chef", height: 300, width: 400, crop: :fill %>
-<% end %>
-<h3><%= @cook.location %> </h3>
-<p><%= @cook.service %> </p>
 
+  <div class="show-card">
+    <% if @cook.photo.attached?  %>
+      <%= cl_image_tag cook.photo.key, height: 300, width: 400, crop: :fill, class: 'show-photo' %>
+    <% else %>
+      <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 200, crop: :fill, class: 'show-photo' %>
+    <% end %>
+    <div class="show-card-infos">
+      <h4><%= @cook.name %></h4>
+      <h5><%= @cook.location %></h5>
+      <p><%= @cook.service %></p>
+      <%= link_to "Book now", new_order_path(order_url), class: 'btn btn-red show-btn' %>
+    </div>
+  </div>

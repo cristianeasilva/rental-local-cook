@@ -1,6 +1,6 @@
 .card-product {
   overflow: hidden;
-  width: 500px;
+  width: 600px;
   height: 170px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -34,6 +34,9 @@
   padding-left: 12px;
   padding-right: 12px;
   text-align: justify;
+}
+
+.card-product .card-product-infos a {
 }
 
 .card-stars {

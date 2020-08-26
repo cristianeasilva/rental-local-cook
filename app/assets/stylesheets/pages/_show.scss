@@ -1,0 +1,38 @@
+.show-card {
+  overflow: hidden;
+  width: 900px;
+  height: 300px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.show-photo {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  height: 100%;
+  width: 35%;
+  object-fit: cover;
+}
+
+.show-card .show-card-infos {
+  padding-top: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: justify;
+}
+
+.show-location-name {
+  padding-top: 10px;
+}
+
+.show-location {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.show-btn {
+  position: relative;
+  top: 135px;
+}
