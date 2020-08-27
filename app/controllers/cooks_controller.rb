@@ -43,6 +43,13 @@ class CooksController < ApplicationController
     end
   end
 
+  def destroy
+    @cook = Cook.find(params[:id])
+    @cook.destroy
+
+    redirect_to root_path, notice: 'Cook was successfully destroyed.'
+  end
+
   private
 
   def cook_params
