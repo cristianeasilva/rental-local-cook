@@ -1,5 +1,7 @@
 .search-form-control {
   position: relative;
+  width: 500px;
+  left: 100px;
 }
 
 .search-form-control .btn {
@@ -20,3 +22,33 @@
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
+
+
+// search button
+.search-form-control .btn {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: 8px;
+}
+.btn-flat {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 4px;
+    background: #1EDD88;
+    transition: background 0.3s ease;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+
