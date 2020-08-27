@@ -13,6 +13,7 @@
   </head>
 
   <body>
+
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-5">
       <a class="navbar-brand d-flex align-items-end" href="/">
         <p id="app-name" class="display-3 m-0 p-0">Local Cooks</p>
@@ -22,20 +23,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-        <div class="search-form-control form-group">
-          <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search"></i> Search
-          </button>
-        </div>
-      <% end %>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto align-items-center">
-
-          <li class="nav-item">
-            <%= link_to("About", root_path, class: 'nav-link mx-2') %>
+          <li class="nav-item"><%= simple_form_for :search, url: root_path, method: :get do |f| %>
+              <div class="search-form-control form-group">
+                <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+                <button name="button" type="submit" class="btn btn-flat">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            <% end %>
           </li>
           <% if current_user.nil? %>
             <%= link_to("Log in", new_user_session_path, class: 'btn btn-green') %>
@@ -52,7 +49,7 @@
                 <%= link_to('Cook', new_cook_path, class: "dropdown-item") %>
                 <%= link_to('Log out', destroy_user_session_path, :method => 'delete', class: "dropdown-item") %>
               </div>
-          </li>
+            </li>
           <% end %>
         </ul>
       </div>
