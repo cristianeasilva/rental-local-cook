@@ -2,7 +2,12 @@ class CooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @cooks = Cook.all
+    search = params[:search]
+    if search.present?
+      @cooks = Cook.search_infos(search[:query])
+    else
+      @cooks = Cook.all
+    end
   end
 
   def show
@@ -44,3 +49,4 @@ class CooksController < ApplicationController
     params.require(:cook).permit(:name, :user_id, :location, :service, :price, photos: [])
   end
 end
+
