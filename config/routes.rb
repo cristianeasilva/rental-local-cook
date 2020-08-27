@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resources :orders, only: :show
+  resources :orders, only: [:show, :destroy]
 
   root to: 'cooks#index'
-
+  resources :users, only: :show
   get 'pages/home', to: 'pages#home'
 end
