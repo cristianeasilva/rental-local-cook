@@ -1,16 +1,15 @@
 // Specific CSS for your home-page
 body {
-  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('bgimg.jpg');
+  background-image: linear-gradient(rgba(255,255,255, 0.8), rgba(255,255,255, 0.8)), asset-url('vegetables.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   position: relative;
   min-height: 100vh;
-
 }
 
 footer {
-  background-color: #c32f27;
+  background-color: #462446;
   width:100%;
   position: absolute;
   bottom: 0;
