@@ -3,8 +3,8 @@
     <% @cooks.each do |cook| %>
       <div class="col mb-4">
         <div class="card rounded-lg">
-        <% if cook.photo.attached?  %>
-          <%= cl_image_tag cook.photo.key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+        <% if cook.photos.attached?  %>
+          <%= cl_image_tag cook.photos[rand(0..cook.photos.size - 1)].key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
         <% else %>
           <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
         <% end %>
@@ -29,4 +29,3 @@
   <% end %>
   </div>
 </div>
-
