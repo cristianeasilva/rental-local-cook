@@ -1,61 +1,59 @@
 <div class="container">
-<div class="bg-light d-flex justify-content-between align-items-center">
-  <div class="m-2 ">
-    <p>User ID: <%= @user.id %></p>
-    <p>User Name: <%= @user.first_name %> <%= @user.last_name %></p>
-  </div>
-  <%= link_to('Edit Profile', edit_user_registration_path, class: 'btn btn-yellow m-2 p-3') %>
-</div>
-
-<div class="row">
-
-  <div class="col-12">
-      <div class="p-3 bg-light">
-        <h2 class="ml-2">Orders</h2>
-        <div class="row">
-          <div class="col-6">
-            <% if @user.orders.blank? %>
-              <p class="m-5 p-5 text-center">No orders yet!</p>
-            <% else %>
-              <ul id="orders-list" class="m-2 list-group">
-              <% @user.orders.each do |order| %>
-                <li id="<%= "order-#{order.id}" %>" class="list-group-item p-2">
-                  <div class="d-flex justify-content-between">
-                    <span class="m-0"><strong><%= order.date %></strong></span>
-                    <span><%= order.cook.name %></span>
-                    <span><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
-                      <%= link_to order_path(order), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
-                        <i class="fas fa-times"></i>
-                      <% end %>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-            <% end %>
+  <div class="user-form mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h2 class="text-center">User Dashboard</h2>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+          <div class="m-2 ">
+            <p>User ID: <%= @user.id %></p>
+            <p>User Name: <%= @user.first_name %> <%= @user.last_name %></p>
+          </div>
+          <%= link_to('Edit Profile', edit_user_registration_path, class: 'btn-yellow m-2 p-3') %>
+        </div>
+        <div class="col-12">
+          <div class="p-3">
+            <h2 class="text-center">Orders</h2>
+              <div class="text-dark">
+                <% if @user.orders.blank? %>
+                  <p class="m-5 p-5 text-center">No orders yet!</p>
+                <% else %>
+                  <ul id="orders-list" class="m-2 list-group">
+                    <% @user.orders.each do |order| %>
+                      <li id="<%= "order-#{order.id}" %>" class="list-group-item p-2">
+                        <div class="d-flex justify-content-between">
+                          <span class="m-0"><strong><%= order.date %></strong></span>
+                          <span><%= order.cook.name %></span>
+                          <span><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
+                            <%= link_to order_path(order), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+                              <i class="fas fa-times"></i>
+                            <% end %>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
           </div>
         </div>
       </div>
-  </div>
-</div>
 
-<div class="row">
-
-  <div class="col-12">
-      <div class="p-3 bg-light">
-        <h2 class="ml-2">Cooks</h2>
-        <div class="row">
-          <div class="col-6">
+      <div class="col-8 p-3 m-5 bg-light text-dark">
+        <h2 class="text-center">Cooks</h2>
+        <div class="row justify-content-center">
+          <div class="col-10">
             <% if @user.cooks.blank? %>
               <p class="m-5 p-5 text-center">No cooks yet!</p>
             <% else %>
               <ul id="orders-list" class="m-2 list-group">
               <% @user.cooks.each do |cook| %>
-                <li id="<%= "cook-#{cook.id}" %>" class="list-group-item p-2">
-                  <div class="d-flex justify-content-between">
-                    <span class="m-0"><strong><%= cook.id %></strong></span>
+                <li id="<%= "cook-#{cook.id}" %>" class="list-group-item p-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="mx-3"><strong><%= cook.id %></strong></span>
                     <span><%= cook.name %></span>
                     <span><%= number_to_currency(cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
-                    <%= link_to('Edit', edit_cook_path(cook), class: 'btn btn-yellow m-2 p-3') %>
+                    <%= link_to('Edit', edit_cook_path(cook), class: 'btn-yellow m-2 p-3') %>
                   </div>
                 </li>
               <% end %>
@@ -64,7 +62,6 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
-
 </div>
