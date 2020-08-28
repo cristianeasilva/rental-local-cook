@@ -3,7 +3,8 @@ class CooksController < ApplicationController
 
   def index
     search = params[:search]
-    if search.present?
+
+    if search.present? && search[:query].present?
       @cooks = Cook.search_infos(search[:query])
     else
       @cooks = Cook.all
@@ -46,7 +47,7 @@ class CooksController < ApplicationController
 
   def destroy
     @cook = Cook.find(params[:id])
-    @cook.destroy
+    @cook.delete
 
     redirect_to root_path, notice: 'Cook was successfully destroyed.'
   end
