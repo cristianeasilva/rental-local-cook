@@ -5,9 +5,9 @@ class CooksController < ApplicationController
     search = params[:search]
 
     if search.present? && search[:query].present?
-      @cooks = Cook.search_infos(search[:query])
+      @cooks = Cook.search_infos(search[:query]).sort_by { |cook| cook.reviews.average(:rating) }.reverse
     else
-      @cooks = Cook.all
+      @cooks = Cook.all.sort_by { |cook| cook.reviews.average(:rating) }.reverse
     end
   end
 
