@@ -10,11 +10,15 @@
         <% end %>
         <div class="d-flex justify-content-between">
           <div class="card-stars p-1">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+            <% if cook.reviews.blank? %>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            <% else %>
+              <span><%= "#{'<i class="fas fa-star"></i> ' * cook.reviews.average(:rating).round}#{'<i class="far fa-star"></i> ' * (5 - cook.reviews.average(:rating).round)}".html_safe %></span>
+            <% end %>
           </div>
           <span class="p-2 h5 font-weight-bold"><%= number_to_currency(cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
         </div>
