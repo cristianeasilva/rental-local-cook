@@ -24,9 +24,9 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+    @user = @order.user
     @order.destroy
-    @user = @review.user
-    redirect_to user_url(@user, anchor: 'orders-list')
+    redirect_to user_url(@user, anchor: 'add-ingredient')
   end
 
   private

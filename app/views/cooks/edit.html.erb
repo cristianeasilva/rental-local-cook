@@ -17,7 +17,11 @@
         <div class="form-actions d-flex justify-content-between">
           <%= f.button :submit, "Update", class: 'btn btn-green' %>
           <div>
-          <%= link_to "Remove", cook_path(@cook), method: :delete, class: 'btn btn-red' %>
+            <% if @cook.orders.empty? %>
+              <%= link_to "Remove", cook_path(@cook), method: :delete, class: 'btn btn-red' %>
+            <% else %>
+              <%= link_to "Remove", cook_path(@cook),  method: :delete, class: 'btn btn-red disabled' %>
+            <% end %>
           </div>
         </div>
       <% end %>
