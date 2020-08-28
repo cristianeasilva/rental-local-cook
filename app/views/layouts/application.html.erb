@@ -45,7 +45,7 @@
               <% end %>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to('Profile', edit_user_registration_path, class: "dropdown-item") %>
+                <%= link_to('Dashboard', user_path(current_user), class: "dropdown-item") %>
                 <%= link_to('Cook', new_cook_path, class: "dropdown-item") %>
                 <%= link_to('Log out', destroy_user_session_path, :method => 'delete', class: "dropdown-item") %>
               </div>
@@ -67,7 +67,6 @@
           <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank", class: "text-info" %>
         </p>
         <div class="pt-3 text-light text-center">Icons made by <a class="text-info" href="https://www.flaticon.com/authors/becris" title="Becris">Becris</a> from <a class="text-info" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-        <p class="text-light text-center">Photo by <a class="text-info" href="https://unsplash.com/@jsnbrsc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jason Briscoe</a> on <a class="text-info" href="https://unsplash.com/s/photos/cook?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
     </footer>
   </body>
 </html>

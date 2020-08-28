@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
-  resources :cooks
+  get 'reviews/new'
   devise_for :users
 
-  resources :cooks, only: [:index, :show, :create, :new] do
+  resources :cooks do
     resources :orders
   end
 
-  resources :orders, only: :show
+  resources :orders, only: [:show, :destroy] do
+    resources :reviews, only: [:new, :create]
+  end
+
+  resources :users, only: :show
+
+  resources :reviews, only: :destroy
 
   root to: 'cooks#index'
-
-  get 'pages/home', to: 'pages#home'
 end

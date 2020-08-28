@@ -12,6 +12,7 @@ class CooksController < ApplicationController
 
   def show
     @cook = Cook.find(params[:id])
+    @reviews = @cook.reviews
   end
 
   def new
@@ -41,6 +42,13 @@ class CooksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @cook = Cook.find(params[:id])
+    @cook.destroy
+
+    redirect_to root_path, notice: 'Cook was successfully destroyed.'
   end
 
   private

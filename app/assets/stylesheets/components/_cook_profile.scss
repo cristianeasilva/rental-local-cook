@@ -256,13 +256,13 @@ a, a:hover {
       margin-right: 0;
     }
 
-    &.button--yellow {
+    &.button--orange {
       background-color: #FF5733;
 
 
       &:hover {
-        box-shadow: 0px 7px 30px rgba(251, 176, 45, 0.75);
-        color: #c32f27;
+        box-shadow: 0px 7px 30px rgba(255, 87, 51, 0.75);
+        color: #C70039;
       }
 
     }
@@ -273,18 +273,18 @@ a, a:hover {
 
       &:hover {
         box-shadow: 0px 7px 30px rgba(124, 181, 24, 0.75);
-        color: #c32f27;
+        color: #FF5733;
       }
 
     }
 
     &.button--red {
-      background-color: #c32f27;
+      background-color: #C70039;
 
 
       &:hover {
-        box-shadow: 0px 7px 30px rgba(251, 176, 45, 0.75);
-        color: #f7912c;
+        box-shadow: 0px 7px 30px rgba(255, 87, 51, 0.75);
+        color: #FF5733;
       }
 
     }
