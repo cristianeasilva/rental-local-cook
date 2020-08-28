@@ -1,8 +1,8 @@
 <div class="container m-auto">
   <div class="row row-cols-1 row-cols-md-3">
     <% @cooks.each do |cook| %>
-      <div class="col mb-4" data-aos="fade-up" data-aos-duration="750">
-        <div class="card rounded-lg">
+      <div class="col mb-4">
+        <div class="card rounded-lg" >
         <% if cook.photos.attached?  %>
           <%= cl_image_tag cook.photos[rand(0..cook.photos.size - 1)].key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
         <% else %>

@@ -30,12 +30,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initFlatPickr } from '../plugins/init_flatpickr';
 import { initStarRating } from '../plugins/init_star_rating';
-import { initAOS } from '../plugins/init_aos';
+// import { initAOS } from '../plugins/init_aos';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initFlatPickr();
   initStarRating();
-  initAOS();
+  // initAOS();
 });
