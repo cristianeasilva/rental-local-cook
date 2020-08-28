@@ -5,9 +5,21 @@ class CooksController < ApplicationController
     search = params[:search]
 
     if search.present? && search[:query].present?
-      @cooks = Cook.search_infos(search[:query]).sort_by { |cook| cook.reviews.average(:rating) }.reverse
+      @cooks = Cook.search_infos(search[:query]).sort_by do |cook|
+        if cook.reviews.empty?
+          0
+        else
+          cook.reviews.average(:rating)
+        end
+      end.reverse
     else
-      @cooks = Cook.all.sort_by { |cook| cook.reviews.average(:rating) }.reverse
+      @cooks = Cook.all.sort_by do |cook|
+        if cook.reviews.empty?
+          0
+        else
+          cook.reviews.average(:rating)
+        end
+      end.reverse
     end
   end
 
@@ -58,4 +70,3 @@ class CooksController < ApplicationController
     params.require(:cook).permit(:name, :user_id, :location, :service, :price, photos: [])
   end
 end
-

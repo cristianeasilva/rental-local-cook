@@ -14,7 +14,7 @@
         </div>
         <div class="col-12">
           <div class="p-3">
-            <h2 class="text-center">Orders</h2>
+            <h2 id="orders-title" class="text-center">Orders</h2>
               <div class="text-dark">
                 <% if @user.orders.blank? %>
                   <p class="m-5 p-5 text-center">No orders yet!</p>
@@ -27,16 +27,20 @@
                           <span class="col-4"><%= order.cook.name %></span>
                           <span class="col-2"><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
                           <div class="col-2 row">
-                            <% if order.date >= Date.today && order.reviews.empty? %>
+                            <% if order.date <= Date.today && order.reviews.empty? %>
                               <%= link_to new_order_review_path(order), title: "Review Order", class: "col-6" do %>
                               <i class="fas fa-star"></i>
                               <% end %>
                             <% else %>
                               <i class="col-6 far fa-star"></i>
                             <% end %>
-                          <%= link_to order_path(order), title: "Delete Order", method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
-                            <i class="col-6 fas fa-times"></i>
-                          <% end %>
+                            <% if order.reviews.empty? %>
+                              <%= link_to order_path(order), title: "Delete Order", method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+                                <i class="col-6 fas fa-times"></i>
+                              <% end %>
+                            <% else %>
+                              <i class="col-6 fas fa-times"></i>
+                            <% end %>
                           </div>
                         </div>
                       </li>
