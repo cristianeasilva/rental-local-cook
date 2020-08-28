@@ -6,14 +6,18 @@
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name"><%= "#{@cook.name}" %></div>
-      <div class="profile-card-loc">
-        <span class="profile-card-loc__icon">
-          <svg class="icon"><use xlink:href="#icon-location"></use></svg>
-        </span>
-        <span class="profile-card-loc__txt">
-          <%= @cook.location %>
-        </span>
+      <div class="profile-card__name"><%= "#{@cook.name}" %>
+        <div class="profile-card-loc">
+          <span class="profile-card-loc__icon">
+            <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+          </span>
+          <span class="profile-card-loc__txt">
+            <%= @cook.location %>
+          </span>
+        </div>
+        <div class="profile-card__prc js-profile-cnt">
+          <div class="profile-card__price"><%= number_to_currency(@cook.price, unit: "R$ ", separator: ",", delimiter: "") %></div>
+        </div>
       </div>
 
       <textarea readonly><%= @cook.service %></textarea>
@@ -22,19 +26,19 @@
         <div class="carousel-inner">
           <% if @cook.photos.attached? %>
             <div class="carousel-item active">
-              <%= cl_image_tag @cook.photos.last.key, height: 432, width: 432, crop: :fill, class: "d-block w-100 rounded" %>
+              <%= cl_image_tag @cook.photos.last.key, height: 216, width: 216, crop: :fill, class: "d-block  rounded", style: 'height: 80%; width: 80%; margin: 0 auto' %>
             </div>
             <% @cook.photos[0..-2].each do |photo|%>
               <div class="carousel-item">
-                <%= cl_image_tag photo.key, height: 432, width: 432, crop: :fill, class: "d-block w-100 rounded" %>
+                <%= cl_image_tag photo.key, height: 216, width: 216, crop: :fill, class: "d-block  rounded", style: 'height: 80%; width: 80%; margin: 0 auto' %>
               </div>
             <% end %>
           <% else %>
             <div class="carousel-item active">
-              <%= image_tag "bgimg.jpg", height: 432, width: 432, crop: :fill, class: "d-block w-100 rounded" %>
+              <%= image_tag "bgimg.jpg", height: 216, width: 216, crop: :fill, class: "d-block  rounded", style: 'height: 80%; width: 80%; margin: 0 auto' %>
             </div>
             <div class="carousel-item">
-              <%= image_tag "bgimg1.jpg", height: 432, width: 432, crop: :fill, class: "d-block w-100 rounded" %>
+              <%= image_tag "bgimg1.jpg", height: 216, width: 216, crop: :fill, class: "d-block  rounded", style: 'height: 80%; width: 80%; margin: 0 auto' %>
             </div>
           <% end %>
         </div>
@@ -46,10 +50,6 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-      </div>
-
-      <div class="profile-card__prc js-profile-cnt">
-          <div class="profile-card__price"><%= number_to_currency(@cook.price, unit: "R$ ", separator: ",", delimiter: "") %></div>
       </div>
 
       <div class="profile-card-ctr">
@@ -64,7 +64,7 @@
 
       <div class="col-12 my-5">
         <div class="p-3 bg-light">
-          <h2 class="ml-2">REVIEWS</h2>
+          <h2 class="ml-2">Reviews</h2>
           <div class="row">
             <div class="col-12">
               <% if @reviews.blank? %>
