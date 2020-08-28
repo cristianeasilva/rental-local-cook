@@ -1,35 +1,39 @@
 <div class="container m-auto">
   <div class="row row-cols-1 row-cols-md-3">
-    <% @cooks.each do |cook| %>
-      <div class="col mb-4">
-        <div class="card rounded-lg">
-        <% if cook.photos.attached?  %>
-          <%= cl_image_tag cook.photos[rand(0..cook.photos.size - 1)].key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
-        <% else %>
-          <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
-        <% end %>
-        <div class="d-flex justify-content-between">
-          <div class="card-stars p-1">
-            <% if cook.reviews.blank? %>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-              <i class="far fa-star"></i>
-            <% else %>
-              <span><%= "#{'<i class="fas fa-star"></i> ' * cook.reviews.average(:rating).round}#{'<i class="far fa-star"></i> ' * (5 - cook.reviews.average(:rating).round)}".html_safe %></span>
-            <% end %>
+    <% if @cooks.present? %>
+      <% @cooks.each do |cook| %>
+        <div class="col mb-4">
+          <div class="card rounded-lg">
+          <% if cook.photos.attached?  %>
+            <%= cl_image_tag cook.photos[rand(0..cook.photos.size - 1)].key, height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "https://loremflickr.com/320/240/chef", height: 150, width: 300, crop: :fill, class: "card-img-top" %>
+          <% end %>
+          <div class="d-flex justify-content-between">
+            <div class="card-stars p-1">
+              <% if cook.reviews.blank? %>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+              <% else %>
+                <span><%= "#{'<i class="fas fa-star"></i> ' * cook.reviews.average(:rating).round}#{'<i class="far fa-star"></i> ' * (5 - cook.reviews.average(:rating).round)}".html_safe %></span>
+              <% end %>
+            </div>
+            <span class="p-2 h5 font-weight-bold"><%= number_to_currency(cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
           </div>
-          <span class="p-2 h5 font-weight-bold"><%= number_to_currency(cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
+          <div class="card-body">
+            <h5 class="card-title"><%= cook.name %></h5>
+            <p class="card-text card-service"><%= cook.service %></p>
+            <p class="card-text"><small class="text-muted"><%= cook.location %></small></p>
+          </div>
+          <%= link_to "Details", cook_path(cook.id), class: 'btn btn-green' %>
         </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= cook.name %></h5>
-          <p class="card-text card-service"><%= cook.service %></p>
-          <p class="card-text"><small class="text-muted"><%= cook.location %></small></p>
-        </div>
-        <%= link_to "Details", cook_path(cook.id), class: 'btn btn-green' %>
       </div>
-    </div>
+    <% end %>
+    <% else %>
+      <h1>Sorry, your search were not found, please try again!</h1>
   <% end %>
   </div>
 </div>

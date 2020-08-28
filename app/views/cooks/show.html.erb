@@ -2,7 +2,11 @@
 <div class="wrapper">
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">
-      <%= cl_image_tag @cook.user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle" %>
+      <% if @cook.user.photo.present? %>
+        <%= cl_image_tag @cook.user.photo.key, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle" %>
+        <% else  %>
+        <%= image_tag ("profile_pic.png"), height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle" %>
+      <% end %>
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
