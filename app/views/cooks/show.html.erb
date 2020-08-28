@@ -17,7 +17,7 @@
       </div>
 
       <textarea readonly><%= @cook.service %></textarea>
-      
+
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
         <div class="carousel-inner">
           <% if @cook.photos.attached? %>
@@ -54,10 +54,10 @@
 
       <div class="profile-card-ctr">
         <% if !current_user.nil? && current_user.id == @cook.user_id %>
-          <%= link_to "Back", root_path, class: "profile-card__button button--yellow" %>
+          <%= link_to "Back", root_path, class: "profile-card__button button--orange" %>
           <%= link_to "Edit", edit_cook_path(@cook), class: 'profile-card__button button--green' %>
         <% else %>
-          <%= link_to "Back", root_path, class: "profile-card__button button--yellow" %>
+          <%= link_to "Back", root_path, class: "profile-card__button button--orange" %>
           <%= link_to "Book now", new_cook_order_path(@cook), class: 'profile-card__button button--red' %>
         <% end %>
       </div>
