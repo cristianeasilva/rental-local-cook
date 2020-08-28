@@ -26,9 +26,13 @@
                           <span class="m-0"><strong><%= order.date %></strong></span>
                           <span><%= order.cook.name %></span>
                           <span><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
-                            <%= link_to order_path(order), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
-                              <i class="fas fa-times"></i>
-                            <% end %>
+                          <%= link_to new_order_review_path(order) do %>
+                            <i class="fas fa-star"></i>
+                          <% end %>
+
+                          <%= link_to order_path(order), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+                            <i class="fas fa-times"></i>
+                          <% end %>
                         </div>
                       </li>
                     <% end %>

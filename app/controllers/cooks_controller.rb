@@ -12,6 +12,7 @@ class CooksController < ApplicationController
 
   def show
     @cook = Cook.find(params[:id])
+    @reviews = @cook.reviews
   end
 
   def new
