@@ -20,19 +20,24 @@
                   <p class="m-5 p-5 text-center">No orders yet!</p>
                 <% else %>
                   <ul id="orders-list" class="m-2 list-group">
-                    <% @user.orders.each do |order| %>
+                    <% @user.orders.order(:date).each do |order| %>
                       <li id="<%= "order-#{order.id}" %>" class="list-group-item p-2">
-                        <div class="d-flex justify-content-between">
-                          <span class="m-0"><strong><%= order.date %></strong></span>
-                          <span><%= order.cook.name %></span>
-                          <span><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
-                          <%= link_to new_order_review_path(order) do %>
-                            <i class="fas fa-star"></i>
+                        <div class="row justify-content-between">
+                          <span class="col-2 m-0"><strong><%= order.date.strftime("%d/%m/%Y") %></strong></span>
+                          <span class="col-4"><%= order.cook.name %></span>
+                          <span class="col-2"><%= number_to_currency(order.cook.price, unit: "R$ ", separator: ",", delimiter: "") %></span>
+                          <div class="col-2 row">
+                            <% if order.date >= Date.today && order.reviews.empty? %>
+                              <%= link_to new_order_review_path(order), title: "Review Order", class: "col-6" do %>
+                              <i class="fas fa-star"></i>
+                              <% end %>
+                            <% else %>
+                              <i class="col-6 far fa-star"></i>
+                            <% end %>
+                          <%= link_to order_path(order), title: "Delete Order", method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
+                            <i class="col-6 fas fa-times"></i>
                           <% end %>
-
-                          <%= link_to order_path(order), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do %>
-                            <i class="fas fa-times"></i>
-                          <% end %>
+                          </div>
                         </div>
                       </li>
                     <% end %>
